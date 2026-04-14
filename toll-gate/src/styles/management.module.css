@@ -1,0 +1,301 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0b1426;
+  color: #f8fafc;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 300px;
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.sectionCard {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.exportButtons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.exportBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: transparent;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.btnCyan {
+  border: 1px solid #00d4ff;
+  color: #00d4ff;
+}
+
+.btnCyan:hover {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.btnGreen {
+  border: 1px solid #10b981;
+  color: #10b981;
+}
+
+.btnGreen:hover {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.btnDesc {
+  margin-top: 1rem;
+  color: #64748b;
+  font-size: 0.75rem;
+}
+
+.registryHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.addBtn {
+  background: #10b981;
+  color: #0b1426;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.searchContainer {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.searchInput {
+  width: 100%;
+  background: #0b1426;
+  border: 1px solid #1e293b;
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  color: white;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  height: 45px;
+}
+.searchIconPadding {
+  padding-left: 2.5rem !important;
+}
+.searchIcon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #475569;
+}
+
+.tableContainer {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  color: #475569;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  text-align: left;
+  letter-spacing: 1px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.row {
+  border-bottom: 1px solid #1e293b;
+}
+
+.cell {
+  padding: 1.2rem 0;
+  font-size: 0.85rem;
+}
+
+.uid {
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.dateCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+}
+
+.statusBadge {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.activeBadge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+
+.inactiveBadge {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+
+.deleteBtn {
+  background: transparent;
+  border: none;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.deleteBtn:hover {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.textCyan {
+  color: #00d4ff;
+}
+
+.textGreen {
+  color: #10b981;
+}
+
+.textRed {
+  color: #ef4444;
+}
+
+.dateCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+}
+
+.statusBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.activeBadge {
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.inactiveBadge {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.deleteBtn {
+  background: none;
+  border: none;
+  color: #ef4444;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.deleteBtn:hover {
+  opacity: 1;
+}
+
+.textCyan { color: #00d4ff; }
+.textGreen { color: #10b981; }
+.textRed { color: #ef4444; }

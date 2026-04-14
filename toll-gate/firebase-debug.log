@@ -1,0 +1,19 @@
+[debug] [2026-04-14T06:25:50.123Z] ----------------------------------------------------------------------
+[debug] [2026-04-14T06:25:50.132Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\sirfaratih\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2026-04-14T06:25:50.133Z] CLI Version:   15.14.0
+[debug] [2026-04-14T06:25:50.133Z] Platform:      win32
+[debug] [2026-04-14T06:25:50.134Z] Node Version:  v22.15.0
+[debug] [2026-04-14T06:25:50.134Z] Time:          Tue Apr 14 2026 13:25:50 GMT+0700 (Western Indonesia Time)
+[debug] [2026-04-14T06:25:50.134Z] ----------------------------------------------------------------------
+[debug] 
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\KULIAH\SEMESTER 6\PEMOGRAMAN BERBASIS FRAMEWORK\SISTEM-MONITORING-PALANG-TOL-\toll-gate
+
