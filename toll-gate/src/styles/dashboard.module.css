@@ -1,16 +1,11 @@
 .container {
-  display: flex;
   min-height: 100vh;
   background-color: #0b1426;
   color: #f8fafc;
 }
 
 .mainContent {
-  flex: 1;
-  margin-left: 300px;
   padding: 2rem;
-  overflow-y: auto;
-  height: 100vh;
 }
 
 .header {
