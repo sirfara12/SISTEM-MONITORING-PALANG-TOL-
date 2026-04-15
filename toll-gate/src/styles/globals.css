@@ -1,4 +1,10 @@
 /* src/styles/globals.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
   --bg-main: #0b1426;
   --bg-sidebar: #0f172a;

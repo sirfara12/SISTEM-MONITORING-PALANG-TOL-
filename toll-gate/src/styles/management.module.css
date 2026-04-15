@@ -1,16 +1,11 @@
 .container {
-  display: flex;
   min-height: 100vh;
   background-color: #0b1426;
   color: #f8fafc;
 }
 
 .mainContent {
-  flex: 1;
-  margin-left: 300px;
   padding: 2rem;
-  overflow-y: auto;
-  height: 100vh;
 }
 
 .header {
@@ -296,6 +291,12 @@
   opacity: 1;
 }
 
-.textCyan { color: #00d4ff; }
-.textGreen { color: #10b981; }
-.textRed { color: #ef4444; }
+.textCyan {
+  color: #00d4ff;
+}
+.textGreen {
+  color: #10b981;
+}
+.textRed {
+  color: #ef4444;
+}

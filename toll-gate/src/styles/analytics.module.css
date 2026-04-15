@@ -1,16 +1,11 @@
 .container {
-  display: flex;
   min-height: 100vh;
-  backgroundColor: #0b1426;
+  background-color: #0b1426;
   color: #f8fafc;
 }
 
 .mainContent {
-  flex: 1;
-  margin-left: 300px;
   padding: 2rem;
-  overflow-y: auto;
-  height: 100vh;
 }
 
 .header {
@@ -72,10 +67,18 @@
 }
 
 /* Colors from image */
-.textCyan { color: #00d4ff; }
-.textGreen { color: #10b981; }
-.textPurple { color: #a855f7; }
-.textYellow { color: #f59e0b; }
+.textCyan {
+  color: #00d4ff;
+}
+.textGreen {
+  color: #10b981;
+}
+.textPurple {
+  color: #a855f7;
+}
+.textYellow {
+  color: #f59e0b;
+}
 
 .chartSection {
   background: #0f172a;
