@@ -1,26 +1,26 @@
-/* src/styles/globals.css */ 
-:root { 
-  --bg-main: #0b1426; 
-  --bg-sidebar: #0f172a; 
-  --text-main: #f8fafc; 
-  --border-color: #1e293b; 
-  --card-bg: #1e293b; 
-  --accent-color: #00d4ff; 
-} 
- 
-[data-theme='light'] { 
-  --bg-main: #f8fafc; 
-  --bg-sidebar: #ffffff; 
-  --text-main: #0f172a; 
-  --border-color: #e2e8f0; 
-  --card-bg: #ffffff; 
-  --accent-color: #0284c7; 
-} 
- 
-body { 
-  margin: 0; 
-  background-color: var(--bg-main); 
-  color: var(--text-main); 
-  font-family: 'Inter', sans-serif; 
-  transition: all 0.3s ease; 
-} 
+/* src/styles/globals.css */
+:root {
+  --bg-main: #0b1426;
+  --bg-sidebar: #0f172a;
+  --text-main: #f8fafc;
+  --border-color: #1e293b;
+  --card-bg: #1e293b;
+  --accent-color: #00d4ff;
+}
+
+[data-theme="light"] {
+  --bg-main: #f8fafc;
+  --bg-sidebar: #ffffff;
+  --text-main: #0f172a;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --accent-color: #0284c7;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "Inter", sans-serif;
+  transition: all 0.3s ease;
+}

@@ -1,7 +1,7 @@
-import { BarChart2, Database, LayoutDashboard, Settings } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import styles from './Sidebar.module.css';
+import { BarChart2, Database, LayoutDashboard, Settings } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -10,7 +10,7 @@ const Sidebar = () => {
     <aside className={styles.sidebar}>
       <div className={styles.logoSection}>
         <div className={styles.logoIcon}>
-          <div className={styles.innerIcon}></div>
+          <div className={styles.innerCircle}></div>
         </div>
         <div>
           <h1 className={styles.logoTitle}>TOLL GATE</h1>
@@ -19,25 +19,28 @@ const Sidebar = () => {
       </div>
 
       <nav className={styles.nav}>
-        <Link 
-          href="/" 
-          className={`${styles.navItem} ${router.pathname === '/' ? styles.active : ''}`}
+        <Link
+          href="/"
+          className={`${styles.navItem} ${router.pathname === "/" ? styles.active : ""}`}
         >
           <LayoutDashboard size={20} />
           <span>Dashboard</span>
         </Link>
-        <Link 
-          href="/analytics" 
-          className={`${styles.navItem} ${router.pathname === '/analytics' ? styles.active : ''}`}
+        <Link
+          href="/analytics"
+          className={`${styles.navItem} ${router.pathname === "/analytics" ? styles.active : ""}`}
         >
           <BarChart2 size={20} />
           <span>Analytics</span>
         </Link>
-        <Link 
-          href="/management" 
-          className={`${styles.navItem} ${router.pathname === '/management' ? styles.active : ''}`}
+        <Link
+          href="/management"
+          className={`${styles.navItem} ${router.pathname === "/management" ? styles.active : ""}`}
         >
-          <Database size={20} fill={router.pathname === '/management' ? "currentColor" : "none"} />
+          <Database
+            size={20}
+            fill={router.pathname === "/management" ? "currentColor" : "none"}
+          />
           <span>Management</span>
         </Link>
       </nav>

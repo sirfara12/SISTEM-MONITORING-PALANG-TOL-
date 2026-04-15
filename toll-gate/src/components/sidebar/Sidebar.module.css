@@ -9,6 +9,16 @@
   position: fixed;
   left: 0;
   top: 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #1a2333;
+  border-radius: 4px;
 }
 
 .logoSection {
@@ -88,7 +98,7 @@
 
 .sidebarFooter {
   margin-top: auto;
-  padding: 1.5rem 0.5rem;
+  padding: 1.5rem 0.5rem 0rem 0.5rem; /* Sedikit penyesuaian padding bawah */
   display: flex;
   justify-content: space-between;
   align-items: center;
