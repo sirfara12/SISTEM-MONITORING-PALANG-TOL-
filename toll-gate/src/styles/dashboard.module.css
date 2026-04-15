@@ -1,0 +1,398 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0b1426;
+  color: #f8fafc;
+}
+
+.mainContent {
+  flex: 1;
+  margin-left: 300px;
+  padding: 2rem;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.headerLeft h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.headerLeft p {
+  color: #64748b;
+  font-size: 0.95rem;
+  margin-top: 0.5rem;
+}
+
+.trafficStatus {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.statusIndicator {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.statusText {
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trafficSmooth {
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+.trafficSmooth .statusIndicator {
+  background-color: #00d4ff;
+  box-shadow: 0 0 10px #00d4ff;
+}
+
+.trafficSmooth .statusText {
+  color: #00d4ff;
+}
+
+.trafficModerate {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.trafficModerate .statusIndicator {
+  background-color: #f59e0b;
+}
+
+.trafficModerate .statusText {
+  color: #f59e0b;
+}
+
+.trafficCongested {
+  background: rgba(236, 72, 153, 0.1);
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.trafficCongested .statusIndicator {
+  background-color: #ec4899;
+}
+
+.trafficCongested .statusText {
+  color: #ec4899;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.statCard {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+
+.textCyan {
+  color: #00d4ff;
+}
+.textMagenta {
+  color: #ec4899;
+}
+.textGreen {
+  color: #10b981;
+}
+.textYellow {
+  color: #f59e0b;
+}
+
+.gateGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.gateCard {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.gateHeader {
+  background: #1a2d4a;
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+}
+
+.gateTitle {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.gateContent {
+  padding: 1.5rem;
+}
+
+.gateStatus {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.gateStatusLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gateStatusLabel {
+  color: #64748b;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.gateStatusValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.gateIndicator {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(100, 116, 139, 0.2);
+  background: #1e293b;
+}
+
+.gateIndicatorActive {
+  border: 2px solid rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.gateButtons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.gateBtn {
+  padding: 0.75rem 1rem;
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: transparent;
+}
+
+.gateBtnOpen {
+  border-color: #00d4ff;
+  color: #00d4ff;
+}
+
+.gateBtnOpen:hover:not(:disabled) {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+.gateBtnClose {
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+.gateBtnClose:hover:not(:disabled) {
+  background: rgba(236, 72, 153, 0.1);
+}
+
+.gateBtnDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.transactionCard {
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.transactionHeader {
+  background: #1a2d4a;
+  padding: 1rem;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transactionTitle {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+.realTimeIndicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.realTimeDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #10b981;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.realTimeText {
+  font-size: 0.7rem;
+  color: #10b981;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.transactionTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeaderCell {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.tableBodyRow {
+  border-bottom: 1px solid #1e293b;
+  transition: background-color 0.3s ease;
+}
+
+.tableBodyRowAccepted {
+  background: rgba(16, 185, 129, 0.02);
+}
+
+.tableBodyRowAccepted:hover {
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.tableBodyRowRejected {
+  background: rgba(236, 72, 153, 0.02);
+}
+
+.tableBodyRowRejected:hover {
+  background: rgba(236, 72, 153, 0.05);
+}
+
+.tableCell {
+  padding: 1rem;
+}
+
+.tableCellCardId {
+  color: #00d4ff;
+  font-weight: 500;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.gateTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  background: #1a2d4a;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.tableCellTime {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.statusBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-family: monospace;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
