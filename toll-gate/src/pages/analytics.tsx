@@ -77,12 +77,12 @@ const validationData = [
 ];
 
 const latencyData = [
-  { name: "00:00", ms: 145 },
-  { name: "04:00", ms: 132 },
-  { name: "08:00", ms: 158 },
-  { name: "12:00", ms: 172 },
-  { name: "16:00", ms: 165 },
-  { name: "20:00", ms: 140 },
+  { name: "00:00", seconds: 145 },
+  { name: "04:00", seconds: 132 },
+  { name: "08:00", seconds: 158 },
+  { name: "12:00", seconds: 172 },
+  { name: "16:00", seconds: 165 },
+  { name: "20:00", seconds: 140 },
 ];
 
 const queueData = [
@@ -148,6 +148,13 @@ const weeklyTrafficData = [
   },
 ];
 
+// Format seconds to mm:ss format
+const formatTravelTime = (seconds: number): string => {
+  const minutes = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+  return `${minutes}m ${secs}s`;
+};
+
 const AnalyticsPage = () => {
   return (
     <div className={styles.container}>
@@ -178,12 +185,12 @@ const AnalyticsPage = () => {
           <div className={styles.statCard}>
             <div className={styles.statHeader}>
               <Activity size={16} />
-              <span>Avg Response</span>
+              <span>Avg Travel Time</span>
             </div>
             <div className={`${styles.statValue} ${styles.textGreen}`}>
-              152 ms
+              2m 32s
             </div>
-            <div className={styles.statMeta}>System latency</div>
+            <div className={styles.statMeta}>Average toll duration</div>
           </div>
           <div className={styles.statCard}>
             <div className={styles.statHeader}>
@@ -334,7 +341,9 @@ const AnalyticsPage = () => {
           </section>
 
           <section className={styles.chartSection} style={{ marginBottom: 0 }}>
-            <h2 className={styles.chartTitle}>System Response Latency</h2>
+            <h2 className={styles.chartTitle}>
+              Avg Travel Time - Hourly Trend
+            </h2>
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={latencyData}>
                 <CartesianGrid
@@ -356,10 +365,18 @@ const AnalyticsPage = () => {
                   tickLine={false}
                   domain={[0, 200]}
                 />
-                <Tooltip />
+                <Tooltip
+                  formatter={(value: number) => formatTravelTime(value)}
+                  contentStyle={{
+                    backgroundColor: "#0f172a",
+                    border: "1px solid #1e293b",
+                    borderRadius: "8px",
+                  }}
+                  itemStyle={{ color: "#f8fafc" }}
+                />
                 <Line
                   type="monotone"
-                  dataKey="ms"
+                  dataKey="seconds"
                   stroke="#f59e0b"
                   strokeWidth={3}
                   dot={{ fill: "#f59e0b", r: 5 }}
