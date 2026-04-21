@@ -16,6 +16,7 @@ type TrafficLevel = "SMOOTH" | "MODERATE" | "CONGESTED";
 type Transaction = {
   id: string;
   cardId: string;
+  date: string;
   time: string;
   status: "ACCEPTED" | "REJECTED";
   gate: "ENTRY" | "EXIT";
@@ -28,6 +29,7 @@ export function Dashboard() {
     {
       id: "1",
       cardId: "RFID-5555",
+      date: "2026-04-21",
       time: "11:48:44",
       status: "REJECTED",
       gate: "EXIT",
@@ -35,6 +37,7 @@ export function Dashboard() {
     {
       id: "2",
       cardId: "RFID-5555",
+      date: "2026-04-21",
       time: "11:45:56",
       status: "ACCEPTED",
       gate: "ENTRY",
@@ -42,6 +45,7 @@ export function Dashboard() {
     {
       id: "3",
       cardId: "RFID-7832",
+      date: "2026-04-21",
       time: "11:45:41",
       status: "ACCEPTED",
       gate: "EXIT",
@@ -49,6 +53,7 @@ export function Dashboard() {
     {
       id: "4",
       cardId: "RFID-9901",
+      date: "2026-04-21",
       time: "11:45:38",
       status: "REJECTED",
       gate: "ENTRY",
@@ -56,6 +61,7 @@ export function Dashboard() {
     {
       id: "5",
       cardId: "RFID-7832",
+      date: "2026-04-21",
       time: "11:45:16",
       status: "ACCEPTED",
       gate: "ENTRY",
@@ -63,6 +69,7 @@ export function Dashboard() {
     {
       id: "6",
       cardId: "RFID-6678",
+      date: "2026-04-21",
       time: "11:45:18",
       status: "ACCEPTED",
       gate: "EXIT",
@@ -70,6 +77,7 @@ export function Dashboard() {
     {
       id: "7",
       cardId: "RFID-4521",
+      date: "2026-04-21",
       time: "11:45:07",
       status: "ACCEPTED",
       gate: "EXIT",
@@ -77,6 +85,7 @@ export function Dashboard() {
     {
       id: "8",
       cardId: "RFID-4521",
+      date: "2026-04-21",
       time: "11:23:45",
       status: "ACCEPTED",
       gate: "ENTRY",
@@ -84,6 +93,7 @@ export function Dashboard() {
     {
       id: "9",
       cardId: "RFID-7832",
+      date: "2026-04-21",
       time: "11:23:12",
       status: "ACCEPTED",
       gate: "EXIT",
@@ -91,6 +101,7 @@ export function Dashboard() {
     {
       id: "10",
       cardId: "RFID-9901",
+      date: "2026-04-21",
       time: "11:22:58",
       status: "REJECTED",
       gate: "ENTRY",
@@ -100,6 +111,22 @@ export function Dashboard() {
   const [vehiclesExited, setVehiclesExited] = useState(234);
   const [trafficLevel, setTrafficLevel] = useState<TrafficLevel>("SMOOTH");
   const [responseTime, setResponseTime] = useState(182);
+
+  // Dummy avg travel time per card ID (in seconds)
+  const cardTravelTimes: { [key: string]: number } = {
+    "RFID-4521": 145,
+    "RFID-7832": 182,
+    "RFID-9901": 156,
+    "RFID-3345": 198,
+    "RFID-6678": 165,
+  };
+
+  // Format seconds to mm:ss format
+  const formatTravelTime = (seconds: number): string => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${minutes}m ${secs}s`;
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -115,10 +142,15 @@ export function Dashboard() {
         const isEntry = Math.random() > 0.5;
         const now = new Date();
         const timeString = now.toLocaleTimeString("en-US", { hour12: false });
+        const dateString = now.toISOString().split("T")[0];
+
+        const selectedCardId =
+          cardIds[Math.floor(Math.random() * cardIds.length)];
 
         const newTransaction: Transaction = {
           id: Date.now().toString(),
-          cardId: cardIds[Math.floor(Math.random() * cardIds.length)],
+          cardId: selectedCardId,
+          date: dateString,
           time: timeString,
           status: isAccepted ? "ACCEPTED" : "REJECTED",
           gate: isEntry ? "ENTRY" : "EXIT",
@@ -132,10 +164,10 @@ export function Dashboard() {
           } else {
             setVehiclesExited((prev) => prev + 1);
           }
+          // Set response time based on card ID
+          setResponseTime(cardTravelTimes[selectedCardId] || 160);
         }
       }
-
-      setResponseTime(Math.floor(120 + Math.random() * 80));
     }, 3000);
 
     return () => clearInterval(interval);
@@ -223,11 +255,10 @@ export function Dashboard() {
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <Clock size={16} style={{ color: "#f59e0b" }} />
-            <span>RESPONSE TIME</span>
+            <span>AVG TRAVEL TIME</span>
           </div>
           <p className={`${styles.statValue} ${styles.textYellow}`}>
-            {responseTime}
-            <span style={{ fontSize: "1rem", marginLeft: "0.5rem" }}>ms</span>
+            {formatTravelTime(responseTime)}
           </p>
         </div>
       </div>
@@ -406,6 +437,7 @@ export function Dashboard() {
               <tr>
                 <th className={styles.tableHeaderCell}>CARD ID</th>
                 <th className={styles.tableHeaderCell}>GATE</th>
+                <th className={styles.tableHeaderCell}>DATE</th>
                 <th className={styles.tableHeaderCell}>ACCESS TIME</th>
                 <th className={styles.tableHeaderCell}>STATUS</th>
               </tr>
@@ -434,6 +466,9 @@ export function Dashboard() {
                       )}
                       {transaction.gate}
                     </span>
+                  </td>
+                  <td className={`${styles.tableCell} ${styles.tableCellTime}`}>
+                    {transaction.date}
                   </td>
                   <td className={`${styles.tableCell} ${styles.tableCellTime}`}>
                     {transaction.time}
