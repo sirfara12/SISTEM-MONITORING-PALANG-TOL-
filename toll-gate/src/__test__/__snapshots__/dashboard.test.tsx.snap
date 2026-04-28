@@ -1,0 +1,1292 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Dashboard matches snapshot 1`] = `
+<DocumentFragment>
+  <main
+    class="mainContent"
+  >
+    <div
+      class="header"
+    >
+      <div
+        class="headerLeft"
+      >
+        <h1>
+          REAL-TIME MONITORING
+        </h1>
+        <p>
+          Live system status and gate control
+        </p>
+      </div>
+      <div
+        class="trafficStatus trafficSmooth"
+      >
+        <div
+          class="statusIndicator"
+        />
+        <span
+          class="statusText"
+        >
+          SMOOTH
+        </span>
+      </div>
+    </div>
+    <div
+      class="statsGrid"
+    >
+      <div
+        class="statCard"
+      >
+        <div
+          class="statHeader"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-arrow-right"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            style="color: rgb(0, 212, 255);"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 12h14"
+            />
+            <path
+              d="m12 5 7 7-7 7"
+            />
+          </svg>
+          <span>
+            VEHICLES ENTERED
+          </span>
+        </div>
+        <p
+          class="statValue textCyan"
+        >
+          248
+        </p>
+      </div>
+      <div
+        class="statCard"
+      >
+        <div
+          class="statHeader"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-arrow-left"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            style="color: rgb(236, 72, 153);"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m12 19-7-7 7-7"
+            />
+            <path
+              d="M19 12H5"
+            />
+          </svg>
+          <span>
+            VEHICLES EXITED
+          </span>
+        </div>
+        <p
+          class="statValue textMagenta"
+        >
+          234
+        </p>
+      </div>
+      <div
+        class="statCard"
+      >
+        <div
+          class="statHeader"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-car"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            style="color: rgb(16, 185, 129);"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"
+            />
+            <circle
+              cx="7"
+              cy="17"
+              r="2"
+            />
+            <path
+              d="M9 17h6"
+            />
+            <circle
+              cx="17"
+              cy="17"
+              r="2"
+            />
+          </svg>
+          <span>
+            CURRENTLY INSIDE
+          </span>
+        </div>
+        <p
+          class="statValue textGreen"
+        >
+          14
+        </p>
+      </div>
+      <div
+        class="statCard"
+      >
+        <div
+          class="statHeader"
+        >
+          <svg
+            aria-hidden="true"
+            class="lucide lucide-clock"
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            style="color: rgb(245, 158, 11);"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="10"
+            />
+            <path
+              d="M12 6v6l4 2"
+            />
+          </svg>
+          <span>
+            AVG TRAVEL TIME
+          </span>
+        </div>
+        <p
+          class="statValue textYellow"
+        >
+          3m 2s
+        </p>
+      </div>
+    </div>
+    <div
+      class="gateGrid"
+    >
+      <div
+        class="gateCard"
+      >
+        <div
+          class="gateHeader"
+        >
+          <h3
+            class="gateTitle"
+            style="color: rgb(0, 212, 255);"
+          >
+            ENTRY GATE
+          </h3>
+        </div>
+        <div
+          class="gateContent"
+        >
+          <div
+            class="gateStatus"
+          >
+            <div
+              class="gateStatusLeft"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-door-closed"
+                fill="none"
+                height="40"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                style="color: rgb(100, 116, 139);"
+                viewBox="0 0 24 24"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 12h.01"
+                />
+                <path
+                  d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"
+                />
+                <path
+                  d="M2 20h20"
+                />
+              </svg>
+              <div>
+                <p
+                  class="gateStatusLabel"
+                >
+                  STATUS
+                </p>
+                <p
+                  class="gateStatusValue"
+                  style="color: rgb(100, 116, 139);"
+                >
+                  CLOSED
+                </p>
+              </div>
+            </div>
+            <div
+              class="gateIndicator "
+            >
+              <div
+                class="gateIndicatorDot "
+              />
+            </div>
+          </div>
+          <div
+            class="gateButtons"
+          >
+            <button
+              class="gateBtn gateBtnOpen "
+            >
+              OPEN GATE
+            </button>
+            <button
+              class="gateBtn gateBtnClose gateBtnDisabled"
+              disabled=""
+            >
+              CLOSE GATE
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class="gateCard"
+      >
+        <div
+          class="gateHeader"
+        >
+          <h3
+            class="gateTitle"
+            style="color: rgb(236, 72, 153);"
+          >
+            EXIT GATE
+          </h3>
+        </div>
+        <div
+          class="gateContent"
+        >
+          <div
+            class="gateStatus"
+          >
+            <div
+              class="gateStatusLeft"
+            >
+              <svg
+                aria-hidden="true"
+                class="lucide lucide-door-closed"
+                fill="none"
+                height="40"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1"
+                style="color: rgb(100, 116, 139);"
+                viewBox="0 0 24 24"
+                width="40"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10 12h.01"
+                />
+                <path
+                  d="M18 20V6a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14"
+                />
+                <path
+                  d="M2 20h20"
+                />
+              </svg>
+              <div>
+                <p
+                  class="gateStatusLabel"
+                >
+                  STATUS
+                </p>
+                <p
+                  class="gateStatusValue"
+                  style="color: rgb(100, 116, 139);"
+                >
+                  CLOSED
+                </p>
+              </div>
+            </div>
+            <div
+              class="gateIndicator "
+            >
+              <div
+                class="gateIndicatorDot "
+                style="background: rgb(100, 116, 139);"
+              />
+            </div>
+          </div>
+          <div
+            class="gateButtons"
+          >
+            <button
+              class="gateBtn gateBtnOpen "
+            >
+              OPEN GATE
+            </button>
+            <button
+              class="gateBtn gateBtnClose gateBtnDisabled"
+              disabled=""
+            >
+              CLOSE GATE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="transactionCard"
+    >
+      <div
+        class="transactionHeader"
+      >
+        <h3
+          class="transactionTitle"
+        >
+          LIVE TRANSACTION FEED
+        </h3>
+        <div
+          class="realTimeIndicator"
+        >
+          <div
+            class="realTimeDot"
+          />
+          <span
+            class="realTimeText"
+          >
+            REAL-TIME
+          </span>
+        </div>
+      </div>
+      <div
+        style="overflow-x: auto;"
+      >
+        <table
+          class="transactionTable"
+        >
+          <thead>
+            <tr>
+              <th
+                class="tableHeaderCell"
+              >
+                CARD ID
+              </th>
+              <th
+                class="tableHeaderCell"
+              >
+                GATE
+              </th>
+              <th
+                class="tableHeaderCell"
+              >
+                DATE
+              </th>
+              <th
+                class="tableHeaderCell"
+              >
+                ACCESS TIME
+              </th>
+              <th
+                class="tableHeaderCell"
+              >
+                STATUS
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="tableBodyRow tableBodyRowRejected"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-5555
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-left"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m12 19-7-7 7-7"
+                    />
+                    <path
+                      d="M19 12H5"
+                    />
+                  </svg>
+                  EXIT
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:48:44
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-x"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="m15 9-6 6"
+                    />
+                    <path
+                      d="m9 9 6 6"
+                    />
+                  </svg>
+                  <span
+                    class="statusRejected"
+                  >
+                    REJECTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-5555
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-right"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(0, 212, 255);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="m12 5 7 7-7 7"
+                    />
+                  </svg>
+                  ENTRY
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:56
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-7832
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-left"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m12 19-7-7 7-7"
+                    />
+                    <path
+                      d="M19 12H5"
+                    />
+                  </svg>
+                  EXIT
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:41
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowRejected"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-9901
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-right"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(0, 212, 255);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="m12 5 7 7-7 7"
+                    />
+                  </svg>
+                  ENTRY
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:38
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-x"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="m15 9-6 6"
+                    />
+                    <path
+                      d="m9 9 6 6"
+                    />
+                  </svg>
+                  <span
+                    class="statusRejected"
+                  >
+                    REJECTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-7832
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-right"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(0, 212, 255);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="m12 5 7 7-7 7"
+                    />
+                  </svg>
+                  ENTRY
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:16
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-6678
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-left"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m12 19-7-7 7-7"
+                    />
+                    <path
+                      d="M19 12H5"
+                    />
+                  </svg>
+                  EXIT
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:18
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-4521
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-left"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m12 19-7-7 7-7"
+                    />
+                    <path
+                      d="M19 12H5"
+                    />
+                  </svg>
+                  EXIT
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:45:07
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-4521
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-right"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(0, 212, 255);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="m12 5 7 7-7 7"
+                    />
+                  </svg>
+                  ENTRY
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:23:45
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowAccepted"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-7832
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-left"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="m12 19-7-7 7-7"
+                    />
+                    <path
+                      d="M19 12H5"
+                    />
+                  </svg>
+                  EXIT
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:23:12
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-check-big"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(16, 185, 129);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21.801 10A10 10 0 1 1 17 3.335"
+                    />
+                    <path
+                      d="m9 11 3 3L22 4"
+                    />
+                  </svg>
+                  <span
+                    class="statusAccepted"
+                  >
+                    ACCEPTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr
+              class="tableBodyRow tableBodyRowRejected"
+            >
+              <td
+                class="tableCell tableCellCardId"
+              >
+                RFID-9901
+              </td>
+              <td
+                class="tableCell"
+              >
+                <span
+                  class="gateTag"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-arrow-right"
+                    fill="none"
+                    height="14"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(0, 212, 255);"
+                    viewBox="0 0 24 24"
+                    width="14"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M5 12h14"
+                    />
+                    <path
+                      d="m12 5 7 7-7 7"
+                    />
+                  </svg>
+                  ENTRY
+                </span>
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                2026-04-21
+              </td>
+              <td
+                class="tableCell tableCellTime"
+              >
+                11:22:58
+              </td>
+              <td
+                class="tableCell"
+              >
+                <div
+                  class="statusBadge"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="lucide lucide-circle-x"
+                    fill="none"
+                    height="18"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    style="color: rgb(236, 72, 153);"
+                    viewBox="0 0 24 24"
+                    width="18"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="10"
+                    />
+                    <path
+                      d="m15 9-6 6"
+                    />
+                    <path
+                      d="m9 9 6 6"
+                    />
+                  </svg>
+                  <span
+                    class="statusRejected"
+                  >
+                    REJECTED
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <style>
+      
+        @keyframes pulse {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.5; }
+        }
+      
+    </style>
+  </main>
+</DocumentFragment>
+`;

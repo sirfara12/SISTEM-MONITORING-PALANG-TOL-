@@ -1,0 +1,514 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Analytics Page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <main
+      class="mainContent"
+    >
+      <header
+        class="header"
+      >
+        <h1
+          class="title"
+        >
+          DATA ANALYTICS
+        </h1>
+        <p
+          class="subtitle"
+        >
+          Traffic insights and system performance metrics
+        </p>
+      </header>
+      <div
+        class="statsGrid"
+      >
+        <div
+          class="statCard"
+        >
+          <div
+            class="statHeader"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-trending-up"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 7h6v6"
+              />
+              <path
+                d="m22 7-8.5 8.5-5-5L2 17"
+              />
+            </svg>
+            <span>
+              Peak Hour
+            </span>
+          </div>
+          <div
+            class="statValue textCyan"
+          >
+            16:00
+          </div>
+          <div
+            class="statMeta"
+          >
+            55 vehicles/hour
+          </div>
+        </div>
+        <div
+          class="statCard"
+        >
+          <div
+            class="statHeader"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-activity"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"
+              />
+            </svg>
+            <span>
+              Avg Travel Time
+            </span>
+          </div>
+          <div
+            class="statValue textGreen"
+          >
+            2m 32s
+          </div>
+          <div
+            class="statMeta"
+          >
+            Average toll duration
+          </div>
+        </div>
+        <div
+          class="statCard"
+        >
+          <div
+            class="statHeader"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-target"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="6"
+              />
+              <circle
+                cx="12"
+                cy="12"
+                r="2"
+              />
+            </svg>
+            <span>
+              Success Rate
+            </span>
+          </div>
+          <div
+            class="statValue textPurple"
+          >
+            92.3%
+          </div>
+          <div
+            class="statMeta"
+          >
+            Acceptance ratio
+          </div>
+        </div>
+        <div
+          class="statCard"
+        >
+          <div
+            class="statHeader"
+          >
+            <svg
+              aria-hidden="true"
+              class="lucide lucide-clock"
+              fill="none"
+              height="16"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+              />
+              <path
+                d="M12 6v6l4 2"
+              />
+            </svg>
+            <span>
+              Avg Queue Time
+            </span>
+          </div>
+          <div
+            class="statValue textYellow"
+          >
+            3.7s
+          </div>
+          <div
+            class="statMeta"
+          >
+            Per vehicle
+          </div>
+        </div>
+      </div>
+      <section
+        class="chartSection"
+      >
+        <h2
+          class="chartTitle"
+        >
+          Traffic Volume - Hourly Breakdown
+        </h2>
+        <div
+          style="height: 350px;"
+        >
+          <div
+            data-testid="mock-responsive-container"
+          >
+            <div
+              data-testid="mock-area-chart"
+            >
+              <defs>
+                <lineargradient
+                  id="colorEntry"
+                  x1="0"
+                  x2="0"
+                  y1="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="5%"
+                    stop-color="#10b981"
+                    stop-opacity="0.3"
+                  />
+                  <stop
+                    offset="95%"
+                    stop-color="#10b981"
+                    stop-opacity="0"
+                  />
+                </lineargradient>
+                <lineargradient
+                  id="colorExit"
+                  x1="0"
+                  x2="0"
+                  y1="0"
+                  y2="1"
+                >
+                  <stop
+                    offset="5%"
+                    stop-color="#00d4ff"
+                    stop-opacity="0.3"
+                  />
+                  <stop
+                    offset="95%"
+                    stop-color="#00d4ff"
+                    stop-opacity="0"
+                  />
+                </lineargradient>
+              </defs>
+              <div
+                data-testid="mock-cartesian-grid"
+              />
+              <div
+                data-testid="mock-xaxis"
+              />
+              <div
+                data-testid="mock-yaxis"
+              />
+              <div
+                data-testid="mock-tooltip"
+              />
+              <div
+                data-testid="mock-area"
+              />
+              <div
+                data-testid="mock-area"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="pieLegend"
+          style="justify-content: center;"
+        >
+          <div
+            class="legendItem"
+          >
+            <div
+              class="dot"
+              style="background-color: rgb(16, 185, 129);"
+            />
+             Entry
+          </div>
+          <div
+            class="legendItem"
+          >
+            <div
+              class="dot"
+              style="background-color: rgb(0, 212, 255);"
+            />
+             Exit
+          </div>
+        </div>
+      </section>
+      <div
+        class="chartRow"
+      >
+        <section
+          class="chartSection"
+          style="margin-bottom: 0px;"
+        >
+          <h2
+            class="chartTitle"
+          >
+            Access Validation
+          </h2>
+          <div
+            class="pieContainer"
+          >
+            <div
+              data-testid="mock-responsive-container"
+            >
+              <div
+                data-testid="mock-pie-chart"
+              >
+                <div
+                  data-testid="mock-pie"
+                />
+                <div
+                  data-testid="mock-tooltip"
+                />
+              </div>
+            </div>
+            <div
+              class="pieLegend"
+            >
+              <div
+                class="legendItem"
+              >
+                <div
+                  class="dot"
+                  style="background-color: rgb(16, 185, 129);"
+                />
+                 Accepted: 1,847
+              </div>
+              <div
+                class="legendItem"
+              >
+                <div
+                  class="dot"
+                  style="background-color: rgb(239, 68, 68);"
+                />
+                 Rejected: 153
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          class="chartSection"
+          style="margin-bottom: 0px;"
+        >
+          <h2
+            class="chartTitle"
+          >
+            Avg Travel Time - Hourly Trend
+          </h2>
+          <div
+            data-testid="mock-responsive-container"
+          >
+            <div
+              data-testid="mock-line-chart"
+            >
+              <div
+                data-testid="mock-cartesian-grid"
+              />
+              <div
+                data-testid="mock-xaxis"
+              />
+              <div
+                data-testid="mock-yaxis"
+              />
+              <div
+                data-testid="mock-tooltip"
+              />
+              <div
+                data-testid="mock-line"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
+      <section
+        class="chartSection"
+        style="margin-top: 2rem;"
+      >
+        <h2
+          class="chartTitle"
+        >
+          WEEKLY TRAFFIC HEATMAP
+        </h2>
+        <div
+          style="padding: 0px 20px;"
+        >
+          <div
+            data-testid="mock-responsive-container"
+          >
+            <div
+              data-testid="mock-bar-chart"
+            >
+              <div
+                data-testid="mock-cartesian-grid"
+              />
+              <div
+                data-testid="mock-xaxis"
+              />
+              <div
+                data-testid="mock-yaxis"
+              />
+              <div
+                data-testid="mock-tooltip"
+              />
+              <div
+                data-testid="mock-bar"
+              />
+              <div
+                data-testid="mock-bar"
+              />
+              <div
+                data-testid="mock-bar"
+              />
+              <div
+                data-testid="mock-bar"
+              />
+            </div>
+          </div>
+          <div
+            class="pieLegend"
+            style="justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;"
+          >
+            <div
+              class="legendItem"
+            >
+              <div
+                class="dot"
+                style="background-color: rgb(168, 85, 247);"
+              />
+               00:00 - 06:00
+            </div>
+            <div
+              class="legendItem"
+            >
+              <div
+                class="dot"
+                style="background-color: rgb(0, 212, 255);"
+              />
+               06:00 - 12:00
+            </div>
+            <div
+              class="legendItem"
+            >
+              <div
+                class="dot"
+                style="background-color: rgb(245, 158, 11);"
+              />
+               12:00 - 18:00
+            </div>
+            <div
+              class="legendItem"
+            >
+              <div
+                class="dot"
+                style="background-color: rgb(16, 185, 129);"
+              />
+               18:00 - 24:00
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="chartSection"
+        style="margin-top: 2rem;"
+      >
+        <h2
+          class="chartTitle"
+        >
+          Average Queue Time Estimation
+        </h2>
+        <div
+          data-testid="mock-responsive-container"
+        >
+          <div
+            data-testid="mock-bar-chart"
+          >
+            <div
+              data-testid="mock-cartesian-grid"
+            />
+            <div
+              data-testid="mock-xaxis"
+            />
+            <div
+              data-testid="mock-yaxis"
+            />
+            <div
+              data-testid="mock-tooltip"
+            />
+            <div
+              data-testid="mock-bar"
+            />
+          </div>
+        </div>
+      </section>
+      <div
+        style="height: 50px;"
+      />
+    </main>
+  </div>
+</DocumentFragment>
+`;
