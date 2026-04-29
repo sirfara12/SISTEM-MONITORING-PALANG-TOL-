@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import mqtt from "mqtt";
 import {
   DoorOpen,
   DoorClosed,
@@ -25,101 +26,11 @@ type Transaction = {
 export function Dashboard() {
   const [entryGateStatus, setEntryGateStatus] = useState<GateStatus>("CLOSED");
   const [exitGateStatus, setExitGateStatus] = useState<GateStatus>("CLOSED");
-  const [transactions, setTransactions] = useState<Transaction[]>([
-    {
-      id: "1",
-      cardId: "RFID-5555",
-      date: "2026-04-21",
-      time: "11:48:44",
-      status: "REJECTED",
-      gate: "EXIT",
-    },
-    {
-      id: "2",
-      cardId: "RFID-5555",
-      date: "2026-04-21",
-      time: "11:45:56",
-      status: "ACCEPTED",
-      gate: "ENTRY",
-    },
-    {
-      id: "3",
-      cardId: "RFID-7832",
-      date: "2026-04-21",
-      time: "11:45:41",
-      status: "ACCEPTED",
-      gate: "EXIT",
-    },
-    {
-      id: "4",
-      cardId: "RFID-9901",
-      date: "2026-04-21",
-      time: "11:45:38",
-      status: "REJECTED",
-      gate: "ENTRY",
-    },
-    {
-      id: "5",
-      cardId: "RFID-7832",
-      date: "2026-04-21",
-      time: "11:45:16",
-      status: "ACCEPTED",
-      gate: "ENTRY",
-    },
-    {
-      id: "6",
-      cardId: "RFID-6678",
-      date: "2026-04-21",
-      time: "11:45:18",
-      status: "ACCEPTED",
-      gate: "EXIT",
-    },
-    {
-      id: "7",
-      cardId: "RFID-4521",
-      date: "2026-04-21",
-      time: "11:45:07",
-      status: "ACCEPTED",
-      gate: "EXIT",
-    },
-    {
-      id: "8",
-      cardId: "RFID-4521",
-      date: "2026-04-21",
-      time: "11:23:45",
-      status: "ACCEPTED",
-      gate: "ENTRY",
-    },
-    {
-      id: "9",
-      cardId: "RFID-7832",
-      date: "2026-04-21",
-      time: "11:23:12",
-      status: "ACCEPTED",
-      gate: "EXIT",
-    },
-    {
-      id: "10",
-      cardId: "RFID-9901",
-      date: "2026-04-21",
-      time: "11:22:58",
-      status: "REJECTED",
-      gate: "ENTRY",
-    },
-  ]);
-  const [vehiclesEntered, setVehiclesEntered] = useState(248);
-  const [vehiclesExited, setVehiclesExited] = useState(234);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [vehiclesEntered, setVehiclesEntered] = useState(0);
+  const [vehiclesExited, setVehiclesExited] = useState(0);
   const [trafficLevel, setTrafficLevel] = useState<TrafficLevel>("SMOOTH");
-  const [responseTime, setResponseTime] = useState(182);
-
-  // Dummy avg travel time per card ID (in seconds)
-  const cardTravelTimes: { [key: string]: number } = {
-    "RFID-4521": 145,
-    "RFID-7832": 182,
-    "RFID-9901": 156,
-    "RFID-3345": 198,
-    "RFID-6678": 165,
-  };
+  const [responseTime, setResponseTime] = useState(0); // Bisa untuk data ultrasonik / travel time nanti
 
   // Format seconds to mm:ss format
   const formatTravelTime = (seconds: number): string => {
@@ -128,51 +39,87 @@ export function Dashboard() {
     return `${minutes}m ${secs}s`;
   };
 
+  // ==========================================
+  // KONEKSI MQTT (HIVEMQ OVER WEBSOCKETS)
+  // ==========================================
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (Math.random() > 0.7) {
-        const cardIds = [
-          "RFID-4521",
-          "RFID-7832",
-          "RFID-9901",
-          "RFID-3345",
-          "RFID-6678",
-        ];
-        const isAccepted = Math.random() > 0.2;
-        const isEntry = Math.random() > 0.5;
-        const now = new Date();
-        const timeString = now.toLocaleTimeString("en-US", { hour12: false });
-        const dateString = now.toISOString().split("T")[0];
+    // Port 8884 wajib untuk WebSockets HiveMQ Cloud
+    const brokerUrl =
+      "wss://fe30660ee0264ad6adb0b772e3d11a56.s1.eu.hivemq.cloud:8884/mqtt";
 
-        const selectedCardId =
-          cardIds[Math.floor(Math.random() * cardIds.length)];
+    const client = mqtt.connect(brokerUrl, {
+      username: "esp32",
+      password: "Esp12345",
+      clientId: `nextjs-dashboard-${Math.random().toString(16).substring(2, 8)}`,
+    });
 
-        const newTransaction: Transaction = {
-          id: Date.now().toString(),
-          cardId: selectedCardId,
-          date: dateString,
-          time: timeString,
-          status: isAccepted ? "ACCEPTED" : "REJECTED",
-          gate: isEntry ? "ENTRY" : "EXIT",
-        };
+    client.on("connect", () => {
+      console.log("Berhasil terhubung ke HiveMQ (WebSockets)!");
+      client.subscribe("tol/gate1/#", (err) => {
+        if (!err) {
+          console.log("Subscribed ke topik: tol/gate1/#");
+        }
+      });
+    });
 
-        setTransactions((prev) => [newTransaction, ...prev].slice(0, 10));
+    client.on("message", (topic, message) => {
+      const payload = message.toString();
+      console.log(`Pesan masuk [${topic}]: ${payload}`);
 
-        if (isAccepted) {
-          if (isEntry) {
-            setVehiclesEntered((prev) => prev + 1);
-          } else {
-            setVehiclesExited((prev) => prev + 1);
+      // 1. UPDATE STATUS PALANG
+      if (topic === "tol/gate1/palang") {
+        setEntryGateStatus(payload === "OPEN" ? "OPEN" : "CLOSED");
+      }
+
+      // 2. TANGKAP EVENT TRANSAKSI (DITERIMA / DITOLAK) DARI JSON ESP32
+      if (topic === "tol/gate1/event") {
+        try {
+          const data = JSON.parse(payload); // Parse string JSON jadi objek JS
+
+          const now = new Date();
+          const timeString = now.toLocaleTimeString("en-US", { hour12: false });
+          const dateString = now.toISOString().split("T")[0];
+
+          // Buat baris transaksi baru
+          const newTransaction: Transaction = {
+            id: Date.now().toString(),
+            cardId: data.uid,
+            date: dateString,
+            time: timeString,
+            // Deteksi status dari ESP32
+            status: data.status === "DITERIMA" ? "ACCEPTED" : "REJECTED",
+            gate: "ENTRY",
+          };
+
+          // Simpan ke tabel (maksimal 10 data terbaru)
+          setTransactions((prev) => [newTransaction, ...prev].slice(0, 10));
+
+          // Update angka kendaraan masuk mengambil dari "total" di JSON
+          if (data.status === "DITERIMA" && data.total !== undefined) {
+            setVehiclesEntered(data.total);
           }
-          // Set response time based on card ID
-          setResponseTime(cardTravelTimes[selectedCardId] || 160);
+        } catch (error) {
+          console.error("Gagal membaca JSON dari ESP32:", error);
         }
       }
-    }, 3000);
 
-    return () => clearInterval(interval);
+      // 3. (Opsional) UPDATE JARAK ULTRASONIK DI LAYAR JIKA PERLU
+      if (topic === "tol/gate1/distance") {
+        // Contoh jika ingin mengubah responseTime jadi indikator jarak (sementara):
+        // setResponseTime(Number(payload));
+      }
+    });
+
+    return () => {
+      if (client) {
+        client.end();
+      }
+    };
   }, []);
 
+  // ==========================================
+  // LOGIKA STATUS KEMACETAN (TRAFFIC LEVEL)
+  // ==========================================
   useEffect(() => {
     const vehiclesInside = vehiclesEntered - vehiclesExited;
     if (vehiclesInside > 30) {
@@ -188,6 +135,7 @@ export function Dashboard() {
     gate: "ENTRY" | "EXIT",
     action: "OPEN" | "CLOSE",
   ) => {
+    // Fungsi ini untuk tombol manual di web, tidak merubah status otomatis dari ESP
     if (gate === "ENTRY") {
       setEntryGateStatus(action);
     } else {
@@ -443,57 +391,79 @@ export function Dashboard() {
               </tr>
             </thead>
             <tbody>
-              {transactions.map((transaction) => (
-                <tr
-                  key={transaction.id}
-                  className={`${styles.tableBodyRow} ${
-                    transaction.status === "ACCEPTED"
-                      ? styles.tableBodyRowAccepted
-                      : styles.tableBodyRowRejected
-                  }`}
-                >
+              {transactions.length === 0 ? (
+                <tr>
                   <td
-                    className={`${styles.tableCell} ${styles.tableCellCardId}`}
+                    colSpan={5}
+                    style={{
+                      textAlign: "center",
+                      padding: "20px",
+                      color: "#64748b",
+                    }}
                   >
-                    {transaction.cardId}
-                  </td>
-                  <td className={styles.tableCell}>
-                    <span className={styles.gateTag}>
-                      {transaction.gate === "ENTRY" ? (
-                        <ArrowRight size={14} style={{ color: "#00d4ff" }} />
-                      ) : (
-                        <ArrowLeft size={14} style={{ color: "#ec4899" }} />
-                      )}
-                      {transaction.gate}
-                    </span>
-                  </td>
-                  <td className={`${styles.tableCell} ${styles.tableCellTime}`}>
-                    {transaction.date}
-                  </td>
-                  <td className={`${styles.tableCell} ${styles.tableCellTime}`}>
-                    {transaction.time}
-                  </td>
-                  <td className={styles.tableCell}>
-                    <div className={styles.statusBadge}>
-                      {transaction.status === "ACCEPTED" ? (
-                        <>
-                          <CheckCircle size={18} style={{ color: "#10b981" }} />
-                          <span className={styles.statusAccepted}>
-                            ACCEPTED
-                          </span>
-                        </>
-                      ) : (
-                        <>
-                          <XCircle size={18} style={{ color: "#ec4899" }} />
-                          <span className={styles.statusRejected}>
-                            REJECTED
-                          </span>
-                        </>
-                      )}
-                    </div>
+                    Menunggu data RFID... Tap kartu di Wokwi.
                   </td>
                 </tr>
-              ))}
+              ) : (
+                transactions.map((transaction) => (
+                  <tr
+                    key={transaction.id}
+                    className={`${styles.tableBodyRow} ${
+                      transaction.status === "ACCEPTED"
+                        ? styles.tableBodyRowAccepted
+                        : styles.tableBodyRowRejected
+                    }`}
+                  >
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellCardId}`}
+                    >
+                      {transaction.cardId}
+                    </td>
+                    <td className={styles.tableCell}>
+                      <span className={styles.gateTag}>
+                        {transaction.gate === "ENTRY" ? (
+                          <ArrowRight size={14} style={{ color: "#00d4ff" }} />
+                        ) : (
+                          <ArrowLeft size={14} style={{ color: "#ec4899" }} />
+                        )}
+                        {transaction.gate}
+                      </span>
+                    </td>
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellTime}`}
+                    >
+                      {transaction.date}
+                    </td>
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellTime}`}
+                    >
+                      {transaction.time}
+                    </td>
+                    <td className={styles.tableCell}>
+                      <div className={styles.statusBadge}>
+                        {transaction.status === "ACCEPTED" ? (
+                          <>
+                            <CheckCircle
+                              size={18}
+                              style={{ color: "#10b981" }}
+                            />
+                            <span className={styles.statusAccepted}>
+                              ACCEPTED
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <XCircle size={18} style={{ color: "#ec4899" }} />
+                            <span className={styles.statusRejected}>
+                              REJECTED
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
