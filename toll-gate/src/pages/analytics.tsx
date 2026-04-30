@@ -366,7 +366,7 @@ const AnalyticsPage = () => {
                   domain={[0, 200]}
                 />
                 <Tooltip
-                  formatter={(value: number) => formatTravelTime(value)}
+                  formatter={(value: any) => value !== undefined ? formatTravelTime(Number(value)) : ''}
                   contentStyle={{
                     backgroundColor: "#0f172a",
                     border: "1px solid #1e293b",
