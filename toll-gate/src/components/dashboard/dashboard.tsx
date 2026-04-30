@@ -138,8 +138,9 @@ export function Dashboard() {
   }, [vehiclesEntered, vehiclesExited]);
 
   const handleGateControl = (gate: "ENTRY" | "EXIT", action: "OPEN" | "CLOSE") => {
-    if (gate === "ENTRY") setEntryGateStatus(action);
-    else                  setExitGateStatus(action);
+    const status: GateStatus = action === "CLOSE" ? "CLOSED" : action;
+    if (gate === "ENTRY") setEntryGateStatus(status);
+    else                  setExitGateStatus(status);
   };
 
   const getTrafficStatusClass = () => {
