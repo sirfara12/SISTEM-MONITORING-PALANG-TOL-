@@ -2,8 +2,14 @@
 
 import { useEffect, useState, useCallback } from "react";
 import {
-  DoorOpen, DoorClosed, CheckCircle, XCircle,
-  Car, Clock, ArrowRight, ArrowLeft,
+  DoorOpen,
+  DoorClosed,
+  CheckCircle,
+  XCircle,
+  Car,
+  Clock,
+  ArrowRight,
+  ArrowLeft,
 } from "lucide-react";
 import styles from "@/styles/dashboard.module.css";
 
@@ -41,24 +47,34 @@ export function Dashboard() {
       const res = await fetch("/api/events");
       const data = await res.json();
 
+      // Check if API returned an error
+      if (data.error) {
+        console.error("API Error:", data.error);
+        return;
+      }
+
       // Set statistik dari DynamoDB
-      setVehiclesEntered(data.stats.total_masuk);
-      setVehiclesExited(data.stats.total_keluar);
+      if (data.stats) {
+        setVehiclesEntered(data.stats.total_masuk || 0);
+        setVehiclesExited(data.stats.total_keluar || 0);
+      }
 
       // Konversi format DynamoDB ke format Transaction
-      const converted: Transaction[] = data.transactions.map((item: any) => {
-        const dt = new Date(item.waktu);
-        return {
-          id: `${item.uid}-${item.waktu}`,
-          cardId: item.uid,
-          date: dt.toISOString().split("T")[0],
-          time: dt.toLocaleTimeString("en-US", { hour12: false }),
-          status: item.status === "DITERIMA" ? "ACCEPTED" : "REJECTED",
-          gate: item.tipe_gate === "MASUK" ? "ENTRY" : "EXIT",
-        };
-      });
+      if (data.transactions && Array.isArray(data.transactions)) {
+        const converted: Transaction[] = data.transactions.map((item: any) => {
+          const dt = new Date(item.waktu);
+          return {
+            id: `${item.uid}-${item.waktu}`,
+            cardId: item.uid,
+            date: dt.toISOString().split("T")[0],
+            time: dt.toLocaleTimeString("en-US", { hour12: false }),
+            status: item.status === "DITERIMA" ? "ACCEPTED" : "REJECTED",
+            gate: item.tipe_gate === "MASUK" ? "ENTRY" : "EXIT",
+          };
+        });
 
-      setTransactions(converted);
+        setTransactions(converted);
+      }
     } catch (err) {
       console.error("Fetch DynamoDB error:", err);
     }
@@ -91,21 +107,20 @@ export function Dashboard() {
           gate: data.tipe_gate === "MASUK" ? "ENTRY" : "EXIT",
         };
 
-        setTransactions(prev => [newTx, ...prev].slice(0, 10));
+        setTransactions((prev) => [newTx, ...prev].slice(0, 10));
 
         // Update gate status visual — hanya kalau DITERIMA
         if (data.status === "DITERIMA") {
           if (data.tipe_gate === "MASUK") {
             setEntryGateStatus("OPEN");
             setTimeout(() => setEntryGateStatus("CLOSED"), 3000);
-            setVehiclesEntered(prev => prev + 1);
+            setVehiclesEntered((prev) => prev + 1);
           } else if (data.tipe_gate === "KELUAR") {
             setExitGateStatus("OPEN");
             setTimeout(() => setExitGateStatus("CLOSED"), 3000);
-            setVehiclesExited(prev => prev + 1);
+            setVehiclesExited((prev) => prev + 1);
           }
         }
-
       } catch (err) {
         console.error("[WS] Parse error:", err);
       }
@@ -127,7 +142,10 @@ export function Dashboard() {
     else setTrafficLevel("SMOOTH");
   }, [vehiclesEntered, vehiclesExited]);
 
-  const handleGateControl = (gate: "ENTRY" | "EXIT", action: "OPEN" | "CLOSE") => {
+  const handleGateControl = (
+    gate: "ENTRY" | "EXIT",
+    action: "OPEN" | "CLOSE",
+  ) => {
     const status: GateStatus = action === "CLOSE" ? "CLOSED" : action;
     if (gate === "ENTRY") setEntryGateStatus(status);
     else setExitGateStatus(status);
@@ -135,9 +153,12 @@ export function Dashboard() {
 
   const getTrafficStatusClass = () => {
     switch (trafficLevel) {
-      case "SMOOTH": return styles.trafficSmooth;
-      case "MODERATE": return styles.trafficModerate;
-      case "CONGESTED": return styles.trafficCongested;
+      case "SMOOTH":
+        return styles.trafficSmooth;
+      case "MODERATE":
+        return styles.trafficModerate;
+      case "CONGESTED":
+        return styles.trafficCongested;
     }
   };
 
@@ -163,28 +184,36 @@ export function Dashboard() {
             <ArrowRight size={16} style={{ color: "#00d4ff" }} />
             <span>VEHICLES ENTERED</span>
           </div>
-          <p className={`${styles.statValue} ${styles.textCyan}`}>{vehiclesEntered}</p>
+          <p className={`${styles.statValue} ${styles.textCyan}`}>
+            {vehiclesEntered}
+          </p>
         </div>
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <ArrowLeft size={16} style={{ color: "#ec4899" }} />
             <span>VEHICLES EXITED</span>
           </div>
-          <p className={`${styles.statValue} ${styles.textMagenta}`}>{vehiclesExited}</p>
+          <p className={`${styles.statValue} ${styles.textMagenta}`}>
+            {vehiclesExited}
+          </p>
         </div>
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <Car size={16} style={{ color: "#10b981" }} />
             <span>CURRENTLY INSIDE</span>
           </div>
-          <p className={`${styles.statValue} ${styles.textGreen}`}>{vehiclesEntered - vehiclesExited}</p>
+          <p className={`${styles.statValue} ${styles.textGreen}`}>
+            {vehiclesEntered - vehiclesExited}
+          </p>
         </div>
         <div className={styles.statCard}>
           <div className={styles.statHeader}>
             <Clock size={16} style={{ color: "#f59e0b" }} />
             <span>AVG TRAVEL TIME</span>
           </div>
-          <p className={`${styles.statValue} ${styles.textYellow}`}>{formatTravelTime(responseTime)}</p>
+          <p className={`${styles.statValue} ${styles.textYellow}`}>
+            {formatTravelTime(responseTime)}
+          </p>
         </div>
       </div>
 
@@ -192,35 +221,59 @@ export function Dashboard() {
         {/* Entry Gate */}
         <div className={styles.gateCard}>
           <div className={styles.gateHeader}>
-            <h3 className={styles.gateTitle} style={{ color: "#00d4ff" }}>ENTRY GATE</h3>
+            <h3 className={styles.gateTitle} style={{ color: "#00d4ff" }}>
+              ENTRY GATE
+            </h3>
           </div>
           <div className={styles.gateContent}>
             <div className={styles.gateStatus}>
               <div className={styles.gateStatusLeft}>
-                {entryGateStatus === "OPEN"
-                  ? <DoorOpen size={40} style={{ color: "#00d4ff" }} strokeWidth={1} />
-                  : <DoorClosed size={40} style={{ color: "#64748b" }} strokeWidth={1} />}
+                {entryGateStatus === "OPEN" ? (
+                  <DoorOpen
+                    size={40}
+                    style={{ color: "#00d4ff" }}
+                    strokeWidth={1}
+                  />
+                ) : (
+                  <DoorClosed
+                    size={40}
+                    style={{ color: "#64748b" }}
+                    strokeWidth={1}
+                  />
+                )}
                 <div>
                   <p className={styles.gateStatusLabel}>STATUS</p>
-                  <p className={styles.gateStatusValue}
-                    style={{ color: entryGateStatus === "OPEN" ? "#00d4ff" : "#64748b" }}>
+                  <p
+                    className={styles.gateStatusValue}
+                    style={{
+                      color: entryGateStatus === "OPEN" ? "#00d4ff" : "#64748b",
+                    }}
+                  >
                     {entryGateStatus}
                   </p>
                 </div>
               </div>
-              <div className={`${styles.gateIndicator} ${entryGateStatus === "OPEN" ? styles.gateIndicatorActive : ""}`}>
-                <div className={`${styles.gateIndicatorDot} ${entryGateStatus === "OPEN" ? styles.gateIndicatorDotActive : ""}`} />
+              <div
+                className={`${styles.gateIndicator} ${entryGateStatus === "OPEN" ? styles.gateIndicatorActive : ""}`}
+              >
+                <div
+                  className={`${styles.gateIndicatorDot} ${entryGateStatus === "OPEN" ? styles.gateIndicatorDotActive : ""}`}
+                />
               </div>
             </div>
             <div className={styles.gateButtons}>
-              <button onClick={() => handleGateControl("ENTRY", "OPEN")}
+              <button
+                onClick={() => handleGateControl("ENTRY", "OPEN")}
                 disabled={entryGateStatus === "OPEN"}
-                className={`${styles.gateBtn} ${styles.gateBtnOpen} ${entryGateStatus === "OPEN" ? styles.gateBtnDisabled : ""}`}>
+                className={`${styles.gateBtn} ${styles.gateBtnOpen} ${entryGateStatus === "OPEN" ? styles.gateBtnDisabled : ""}`}
+              >
                 OPEN GATE
               </button>
-              <button onClick={() => handleGateControl("ENTRY", "CLOSE")}
+              <button
+                onClick={() => handleGateControl("ENTRY", "CLOSE")}
                 disabled={entryGateStatus === "CLOSED"}
-                className={`${styles.gateBtn} ${styles.gateBtnClose} ${entryGateStatus === "CLOSED" ? styles.gateBtnDisabled : ""}`}>
+                className={`${styles.gateBtn} ${styles.gateBtnClose} ${entryGateStatus === "CLOSED" ? styles.gateBtnDisabled : ""}`}
+              >
                 CLOSE GATE
               </button>
             </div>
@@ -230,37 +283,69 @@ export function Dashboard() {
         {/* Exit Gate */}
         <div className={styles.gateCard}>
           <div className={styles.gateHeader}>
-            <h3 className={styles.gateTitle} style={{ color: "#ec4899" }}>EXIT GATE</h3>
+            <h3 className={styles.gateTitle} style={{ color: "#ec4899" }}>
+              EXIT GATE
+            </h3>
           </div>
           <div className={styles.gateContent}>
             <div className={styles.gateStatus}>
               <div className={styles.gateStatusLeft}>
-                {exitGateStatus === "OPEN"
-                  ? <DoorOpen size={40} style={{ color: "#ec4899" }} strokeWidth={1} />
-                  : <DoorClosed size={40} style={{ color: "#64748b" }} strokeWidth={1} />}
+                {exitGateStatus === "OPEN" ? (
+                  <DoorOpen
+                    size={40}
+                    style={{ color: "#ec4899" }}
+                    strokeWidth={1}
+                  />
+                ) : (
+                  <DoorClosed
+                    size={40}
+                    style={{ color: "#64748b" }}
+                    strokeWidth={1}
+                  />
+                )}
                 <div>
                   <p className={styles.gateStatusLabel}>STATUS</p>
-                  <p className={styles.gateStatusValue}
-                    style={{ color: exitGateStatus === "OPEN" ? "#ec4899" : "#64748b" }}>
+                  <p
+                    className={styles.gateStatusValue}
+                    style={{
+                      color: exitGateStatus === "OPEN" ? "#ec4899" : "#64748b",
+                    }}
+                  >
                     {exitGateStatus}
                   </p>
                 </div>
               </div>
-              <div className={`${styles.gateIndicator} ${exitGateStatus === "OPEN" ? styles.gateIndicatorActive : ""}`}
-                style={{ borderColor: exitGateStatus === "OPEN" ? "rgba(236,72,153,0.3)" : undefined }}>
-                <div className={`${styles.gateIndicatorDot} ${exitGateStatus === "OPEN" ? styles.gateIndicatorDotActive : ""}`}
-                  style={{ background: exitGateStatus === "OPEN" ? "#ec4899" : "#64748b" }} />
+              <div
+                className={`${styles.gateIndicator} ${exitGateStatus === "OPEN" ? styles.gateIndicatorActive : ""}`}
+                style={{
+                  borderColor:
+                    exitGateStatus === "OPEN"
+                      ? "rgba(236,72,153,0.3)"
+                      : undefined,
+                }}
+              >
+                <div
+                  className={`${styles.gateIndicatorDot} ${exitGateStatus === "OPEN" ? styles.gateIndicatorDotActive : ""}`}
+                  style={{
+                    background:
+                      exitGateStatus === "OPEN" ? "#ec4899" : "#64748b",
+                  }}
+                />
               </div>
             </div>
             <div className={styles.gateButtons}>
-              <button onClick={() => handleGateControl("EXIT", "OPEN")}
+              <button
+                onClick={() => handleGateControl("EXIT", "OPEN")}
                 disabled={exitGateStatus === "OPEN"}
-                className={`${styles.gateBtn} ${styles.gateBtnOpen} ${exitGateStatus === "OPEN" ? styles.gateBtnDisabled : ""}`}>
+                className={`${styles.gateBtn} ${styles.gateBtnOpen} ${exitGateStatus === "OPEN" ? styles.gateBtnDisabled : ""}`}
+              >
                 OPEN GATE
               </button>
-              <button onClick={() => handleGateControl("EXIT", "CLOSE")}
+              <button
+                onClick={() => handleGateControl("EXIT", "CLOSE")}
                 disabled={exitGateStatus === "CLOSED"}
-                className={`${styles.gateBtn} ${styles.gateBtnClose} ${exitGateStatus === "CLOSED" ? styles.gateBtnDisabled : ""}`}>
+                className={`${styles.gateBtn} ${styles.gateBtnClose} ${exitGateStatus === "CLOSED" ? styles.gateBtnDisabled : ""}`}
+              >
                 CLOSE GATE
               </button>
             </div>
@@ -291,32 +376,72 @@ export function Dashboard() {
             <tbody>
               {transactions.length === 0 ? (
                 <tr>
-                  <td colSpan={5} style={{ textAlign: "center", padding: "20px", color: "#64748b" }}>
+                  <td
+                    colSpan={5}
+                    style={{
+                      textAlign: "center",
+                      padding: "20px",
+                      color: "#64748b",
+                    }}
+                  >
                     Menunggu data RFID... Tap kartu di Wokwi.
                   </td>
                 </tr>
               ) : (
                 transactions.map((transaction) => (
-                  <tr key={transaction.id}
-                    className={`${styles.tableBodyRow} ${transaction.status === "ACCEPTED"
+                  <tr
+                    key={transaction.id}
+                    className={`${styles.tableBodyRow} ${
+                      transaction.status === "ACCEPTED"
                         ? styles.tableBodyRowAccepted
-                        : styles.tableBodyRowRejected}`}>
-                    <td className={`${styles.tableCell} ${styles.tableCellCardId}`}>{transaction.cardId}</td>
+                        : styles.tableBodyRowRejected
+                    }`}
+                  >
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellCardId}`}
+                    >
+                      {transaction.cardId}
+                    </td>
                     <td className={styles.tableCell}>
                       <span className={styles.gateTag}>
-                        {transaction.gate === "ENTRY"
-                          ? <ArrowRight size={14} style={{ color: "#00d4ff" }} />
-                          : <ArrowLeft size={14} style={{ color: "#ec4899" }} />}
+                        {transaction.gate === "ENTRY" ? (
+                          <ArrowRight size={14} style={{ color: "#00d4ff" }} />
+                        ) : (
+                          <ArrowLeft size={14} style={{ color: "#ec4899" }} />
+                        )}
                         {transaction.gate}
                       </span>
                     </td>
-                    <td className={`${styles.tableCell} ${styles.tableCellTime}`}>{transaction.date}</td>
-                    <td className={`${styles.tableCell} ${styles.tableCellTime}`}>{transaction.time}</td>
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellTime}`}
+                    >
+                      {transaction.date}
+                    </td>
+                    <td
+                      className={`${styles.tableCell} ${styles.tableCellTime}`}
+                    >
+                      {transaction.time}
+                    </td>
                     <td className={styles.tableCell}>
                       <div className={styles.statusBadge}>
-                        {transaction.status === "ACCEPTED"
-                          ? <><CheckCircle size={18} style={{ color: "#10b981" }} /><span className={styles.statusAccepted}>ACCEPTED</span></>
-                          : <><XCircle size={18} style={{ color: "#ec4899" }} /><span className={styles.statusRejected}>REJECTED</span></>}
+                        {transaction.status === "ACCEPTED" ? (
+                          <>
+                            <CheckCircle
+                              size={18}
+                              style={{ color: "#10b981" }}
+                            />
+                            <span className={styles.statusAccepted}>
+                              ACCEPTED
+                            </span>
+                          </>
+                        ) : (
+                          <>
+                            <XCircle size={18} style={{ color: "#ec4899" }} />
+                            <span className={styles.statusRejected}>
+                              REJECTED
+                            </span>
+                          </>
+                        )}
                       </div>
                     </td>
                   </tr>
