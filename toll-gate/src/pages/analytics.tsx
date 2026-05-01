@@ -72,8 +72,8 @@ const volumeData = [
 ];
 
 const validationData = [
-  { name: "Accepted", value: 1847, color: "#10b981" },
-  { name: "Rejected", value: 153, color: "#ef4444" },
+  { name: "Accepted", value: 1847, fill: "#10b981" },
+  { name: "Rejected", value: 153, fill: "#ef4444" },
 ];
 
 const latencyData = [
@@ -311,11 +311,13 @@ const AnalyticsPage = () => {
                     cy="50%"
                     innerRadius={60}
                     outerRadius={80}
-                    paddingAngle={5}
+                    paddingAngle={2}
                     dataKey="value"
+                    stroke="#0f172a"
+                    strokeWidth={2}
                   >
                     {validationData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={entry.color} />
+                      <Cell key={`cell-${index}`} fill={entry.fill} />
                     ))}
                   </Pie>
                   <Tooltip />
@@ -366,7 +368,9 @@ const AnalyticsPage = () => {
                   domain={[0, 200]}
                 />
                 <Tooltip
-                  formatter={(value: any) => value !== undefined ? formatTravelTime(Number(value)) : ''}
+                  formatter={(value: any) =>
+                    value !== undefined ? formatTravelTime(Number(value)) : ""
+                  }
                   contentStyle={{
                     backgroundColor: "#0f172a",
                     border: "1px solid #1e293b",
