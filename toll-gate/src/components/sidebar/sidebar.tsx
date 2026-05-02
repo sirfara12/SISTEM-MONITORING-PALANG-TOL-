@@ -1,6 +1,7 @@
 import { BarChart2, Database, LayoutDashboard, Settings } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
@@ -9,13 +10,13 @@ const Sidebar = () => {
   return (
     <aside className={styles.sidebar}>
       <div className={styles.logoSection}>
-        <div className={styles.logoIcon}>
-          <div className={styles.innerCircle}></div>
-        </div>
-        <div>
-          <h1 className={styles.logoTitle}>TOLL GATE</h1>
-          <p className={styles.logoSubtitle}>KELOMPOK 5</p>
-        </div>
+        <Image
+          src="/logo-horizontal.svg"
+          alt="Toll Gate Logo"
+          width={500}
+          height={70}
+          priority
+        />
       </div>
 
       <nav className={styles.nav}>
